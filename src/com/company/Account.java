@@ -44,12 +44,12 @@ public class Account {
         }else if (previousTransanction < 0){
             System.out.println("Withdrawn: " + Math.abs(previousTransanction));
         }else {
-            System.out.println("No transaction occurred");
+            System.out.println("No transaction made");
         }
     }
 
     public void calculateInterestRate(int yearsRate){
-        double interestRate = 0.02;
+        double interestRate = 0.10;
         double newBalance = (accountBalance * interestRate * yearsRate) +accountBalance;
         //calculation to get the actual interest rate
         System.out.println("The current interest rate is " + (100 * interestRate) + "%");
@@ -57,12 +57,12 @@ public class Account {
     }
 
     public void showMenu(){
-         char options;
+         char options = '\0';
          Scanner input = new Scanner(System.in);
 
         System.out.println("Welcome, " + customerName + "your bank account!");
         System.out.println("Your ID is: "+ customerId);
-        System.out.println("\nWhat would line to do?");
+        System.out.println("\nWhat would like to do?");
         System.out.println("\nA, Check your account balance");
         System.out.println("B, Make a deposit into your account");
         System.out.println("C, Make a withdrawal");
@@ -108,11 +108,12 @@ public class Account {
                     showPreviousTransaction();
                     System.out.println("----------------------------------------");
                     System.out.println();
-
+                    break;
                 //calculate the interest rate accumulated after numbers of years entered by the user
                 case 'E':
-                    System.out.println("Enter how many yeats of interest: ");
+                    System.out.println("Enter how many years of interest: ");
                     int years = input.nextInt();
+                    calculateInterestRate(years);
                     break;
 
                 //exits the user from their account
